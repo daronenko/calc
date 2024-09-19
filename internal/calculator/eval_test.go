@@ -10,7 +10,7 @@ import (
 func TestEval(t *testing.T) {
 	tests := []struct {
 		expression  string
-		expected    int
+		expected    float64
 		expectError bool
 	}{
 		{
@@ -19,7 +19,7 @@ func TestEval(t *testing.T) {
 		},
 		{
 			expression: "7 * 8 / 9",
-			expected:   6,
+			expected:   6.222222,
 		},
 		{
 			expression: "(1 + 2) * 3",
@@ -32,6 +32,14 @@ func TestEval(t *testing.T) {
 		{
 			expression: "2 * (4 / ((1 + 2) + 1))",
 			expected:   2,
+		},
+		{
+			expression: "4 + 5.2",
+			expected:   9.2,
+		},
+		{
+			expression: "(3.2 + 3) / 2",
+			expected:   3.1,
 		},
 		{
 			expression:  "5 - (6 / 0) + 3",

@@ -45,7 +45,7 @@ func Tokenize(expression string) ([]Token, error) {
 				tokenBuilder.Reset()
 			}
 
-		case unicode.IsDigit(char):
+		case unicode.IsDigit(char) || char == '.':
 			tokenBuilder.WriteRune(char)
 
 		case isOperator(string(char)) || isBracket(string(char)):

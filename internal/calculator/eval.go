@@ -8,7 +8,7 @@ import (
 	"github.com/daronenko/calc/pkg/stack"
 )
 
-func Eval(expression string) (int, error) {
+func Eval(expression string) (float64, error) {
 	if len(expression) == 0 {
 		return 0, fmt.Errorf("expression cannot be empty")
 	}
@@ -31,7 +31,7 @@ func Eval(expression string) (int, error) {
 	return result, nil
 }
 
-func evalImpl(postfixTokens []token.Token) (int, error) {
+func evalImpl(postfixTokens []token.Token) (float64, error) {
 	stack := stack.New[token.Token]()
 
 	for _, t := range postfixTokens {

@@ -2,7 +2,6 @@ package token
 
 import (
 	"fmt"
-	"strconv"
 )
 
 type Operation func(lhs, rhs *Operand) (*Operand, error)
@@ -12,7 +11,7 @@ var operators = map[string]*Operator{
 		value:      "+",
 		precedence: 10,
 		operation: func(lhs, rhs *Operand) (*Operand, error) {
-			result, _ := NewOperand(strconv.Itoa(lhs.Value() + rhs.Value()))
+			result, _ := NewOperand(fmt.Sprintf("%f", lhs.Value()+rhs.Value()))
 			return result, nil
 		},
 	},
@@ -20,7 +19,7 @@ var operators = map[string]*Operator{
 		value:      "-",
 		precedence: 10,
 		operation: func(lhs, rhs *Operand) (*Operand, error) {
-			result, _ := NewOperand(strconv.Itoa(lhs.Value() - rhs.Value()))
+			result, _ := NewOperand(fmt.Sprintf("%f", lhs.Value()-rhs.Value()))
 			return result, nil
 		},
 	},
@@ -28,7 +27,7 @@ var operators = map[string]*Operator{
 		value:      "*",
 		precedence: 20,
 		operation: func(lhs, rhs *Operand) (*Operand, error) {
-			result, _ := NewOperand(strconv.Itoa(lhs.Value() * rhs.Value()))
+			result, _ := NewOperand(fmt.Sprintf("%f", lhs.Value()*rhs.Value()))
 			return result, nil
 		},
 	},
@@ -40,7 +39,7 @@ var operators = map[string]*Operator{
 				return nil, fmt.Errorf("division by zero")
 			}
 
-			result, _ := NewOperand(strconv.Itoa(lhs.Value() / rhs.Value()))
+			result, _ := NewOperand(fmt.Sprintf("%f", lhs.Value()/rhs.Value()))
 			return result, nil
 		},
 	},
