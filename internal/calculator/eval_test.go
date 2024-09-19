@@ -42,6 +42,10 @@ func TestEval(t *testing.T) {
 			expected:   3.1,
 		},
 		{
+			expression:  "3.4 3 + 1",
+			expectError: true,
+		},
+		{
 			expression:  "5 - (6 / 0) + 3",
 			expectError: true,
 		},

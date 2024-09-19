@@ -62,5 +62,9 @@ func evalImpl(postfixTokens []token.Token) (float64, error) {
 	// ignore error, because stack always contains at least one element
 	result, _ := stack.Pop()
 
+	if stack.Len() != 0 {
+		return 0, fmt.Errorf("invalid math expression")
+	}
+
 	return result.(*token.Operand).Value(), nil
 }
