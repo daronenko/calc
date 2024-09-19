@@ -63,7 +63,7 @@ func Tokenize(expression string) ([]Token, error) {
 			tokens = append(tokens, token)
 
 		default:
-			return nil, fmt.Errorf("unsupported character: %v", char)
+			return nil, fmt.Errorf("unsupported character: %c", char)
 		}
 	}
 
