@@ -42,20 +42,25 @@ func evalImpl(postfixTokens []token.Token) (float64, error) {
 		default:
 			rhs, ok := stack.Pop()
 			if !ok {
-				return 0, fmt.Errorf("no right hand side operand")
+				return 0, fmt.Errorf("not enough operands for the operator '%s'", t.(*token.Operator).Operation())
 			}
 
-			lhs, ok := stack.Pop()
-			if !ok {
-				return 0, fmt.Errorf("no left hand side operand")
+			lhs, binaryOperator := stack.Pop()
+
+			var result token.Token
+			var err error
+
+			if binaryOperator {
+				result, err = t.(*token.Operator).Call(*lhs.(*token.Operand), *rhs.(*token.Operand))
+			} else {
+				result, err = t.(*token.Operator).Call(*rhs.(*token.Operand))
 			}
 
-			res, err := t.(*token.Operator).Call(lhs.(*token.Operand), rhs.(*token.Operand))
 			if err != nil {
 				return 0, fmt.Errorf("error during operation execution: %v", err)
 			}
 
-			stack.Push(res)
+			stack.Push(result)
 		}
 	}
 
