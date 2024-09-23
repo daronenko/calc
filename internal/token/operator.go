@@ -86,6 +86,7 @@ func NewOperator(value string) (*Operator, error) {
 	if !exists {
 		return nil, fmt.Errorf("invalid operator: `%s`", value)
 	}
+
 	return op, nil
 }
 
