@@ -65,6 +65,10 @@ func TestEval(t *testing.T) {
 			expression:  "",
 			expectError: true,
 		},
+		{
+			expression:  "4. 6 + 1",
+			expectError: true,
+		},
 	}
 
 	for _, tt := range tests {

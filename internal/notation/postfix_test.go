@@ -106,6 +106,32 @@ func TestToPostfix(t *testing.T) {
 		},
 		{
 			input: []token.Token{
+				ignoreError(token.NewBracket("(")),
+				ignoreError(token.NewOperand("7")),
+				ignoreError(token.NewOperator("-")),
+				ignoreError(token.NewOperand("3")),
+				ignoreError(token.NewOperator("-")),
+				ignoreError(token.NewBracket("(")),
+				ignoreError(token.NewOperator("+")),
+				ignoreError(token.NewOperand("1")),
+				ignoreError(token.NewBracket(")")),
+				ignoreError(token.NewBracket(")")),
+				ignoreError(token.NewOperator("*")),
+				ignoreError(token.NewOperand("2")),
+			},
+			expected: []token.Token{
+				ignoreError(token.NewOperand("7")),
+				ignoreError(token.NewOperand("3")),
+				ignoreError(token.NewOperator("-")),
+				ignoreError(token.NewOperand("1")),
+				ignoreError(token.NewOperator("+")),
+				ignoreError(token.NewOperator("-")),
+				ignoreError(token.NewOperand("2")),
+				ignoreError(token.NewOperator("*")),
+			},
+		},
+		{
+			input: []token.Token{
 				ignoreError(token.NewOperand("2")),
 				ignoreError(token.NewOperator("*")),
 				ignoreError(token.NewBracket("(")),
