@@ -1,0 +1,5 @@
+	github.com/daronenko/calc/cmd		coverage: 0.0% of statements
+ok  	github.com/daronenko/calc/internal/calculator	0.419s	coverage: 89.3% of statements
+ok  	github.com/daronenko/calc/internal/notation	0.703s	coverage: 94.4% of statements
+ok  	github.com/daronenko/calc/internal/token	0.964s	coverage: 69.1% of statements
+ok  	github.com/daronenko/calc/pkg/stack	1.230s	coverage: 100.0% of statements
